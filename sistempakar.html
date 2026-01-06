@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Sistem Pakar Kerusakan Komputer</title>
+
+<style>
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg,#eef2ff,#f8fafc);
+  padding: 20px;
+}
+
+.box{
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.gejala{
+  columns: 2;
+  column-gap: 30px;
+  margin-top: 15px;
+}
+
+.gejala label{
+  display: block;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+button{
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg,#2563eb,#22c55e);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover{
+  opacity: .9;
+}
+
+/* === PROGRESS BAR === */
+.progress-area{
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.progress-meta{
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.progress{
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#3b82f6,#22c55e);
+  transition: width .3s ease;
+}
+
+/* === HASIL === */
+.result{
+  margin-top: 20px;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>🧠 Sistem Pakar Diagnosa Kerusakan Komputer & Laptop</h2>
+<p>Centang gejala yang dialami:</p>
+
+<div class="gejala">
+<label><input type="checkbox" id="G001"> G001 Kabel power terpasang benar</label>
+<label><input type="checkbox" id="G002"> G002 Kabel listrik terpasang benar</label>
+<label><input type="checkbox" id="G003"> G003 Power supply rusak</label>
+<label><input type="checkbox" id="G004"> G004 Lampu CPU mati</label>
+<label><input type="checkbox" id="G006"> G006 Baterai habis</label>
+<label><input type="checkbox" id="G007"> G007 Indikator laptop mati</label>
+<label><input type="checkbox" id="G008"> G008 Tidak ada arus adaptor</label>
+<label><input type="checkbox" id="G009"> G009 DC Jack rusak</label>
+<label><input type="checkbox" id="G010"> G010 Komputer sering mati</label>
+<label><input type="checkbox" id="G011"> G011 RAM tidak terdeteksi</label>
+<label><input type="checkbox" id="G012"> G012 Layar hitam</label>
+<label><input type="checkbox" id="G013"> G013 Komputer lambat</label>
+<label><input type="checkbox" id="G014"> G014 RAM tidak cocok</label>
+<label><input type="checkbox" id="G015"> G015 Gagal loading Windows</label>
+<label><input type="checkbox" id="G016"> G016 Penyimpanan lambat</label>
+<label><input type="checkbox" id="G017"> G017 Hang saat simpan data</label>
+<label><input type="checkbox" id="G018"> G018 Restart/mati mendadak</label>
+<label><input type="checkbox" id="G019"> G019 Blue screen</label>
+<label><input type="checkbox" id="G020"> G020 Harddisk berisik</label>
+<label><input type="checkbox" id="G021"> G021 Booting lama</label>
+<label><input type="checkbox" id="G022"> G022 Masalah masuk Windows</label>
+<label><input type="checkbox" id="G023"> G023 Explorer error</label>
+<label><input type="checkbox" id="G024"> G024 Shutdown tidak sempurna</label>
+<label><input type="checkbox" id="G025"> G025 Software crash</label>
+<label><input type="checkbox" id="G026"> G026 Konflik hardware baru</label>
+<label><input type="checkbox" id="G027"> G027 Virus</label>
+<label><input type="checkbox" id="G028"> G028 Keyboard tidak terpasang</label>
+<label><input type="checkbox" id="G029"> G029 Keyboard rusak</label>
+<label><input type="checkbox" id="G030"> G030 Setting keyboard salah</label>
+<label><input type="checkbox" id="G031"> G031 Port USB rusak</label>
+<label><input type="checkbox" id="G032"> G032 Driver keyboard salah</label>
+<label><input type="checkbox" id="G033"> G033 Keyboard tidak terdeteksi</label>
+<label><input type="checkbox" id="G034"> G034 Mouse tidak terpasang</label>
+<label><input type="checkbox" id="G035"> G035 Mouse rusak</label>
+<label><input type="checkbox" id="G036"> G036 Setting mouse salah</label>
+<label><input type="checkbox" id="G037"> G037 Port mouse rusak</label>
+<label><input type="checkbox" id="G038"> G038 Driver mouse salah</label>
+<label><input type="checkbox" id="G039"> G039 Mouse tidak terdeteksi</label>
+<label><input type="checkbox" id="G040"> G040 Jam BIOS salah</label>
+<label><input type="checkbox" id="G041"> G041 Setup ulang BIOS</label>
+<label><input type="checkbox" id="G042"> G042 Macet saat game/edit</label>
+<label><input type="checkbox" id="G043"> G043 Garis di layar</label>
+<label><input type="checkbox" id="G044"> G044 Monitor kosong</label>
+<label><input type="checkbox" id="G047"> G047 Colokan listrik longgar</label>
+<label><input type="checkbox" id="G048"> G048 Driver monitor salah</label>
+<label><input type="checkbox" id="G049"> G049 Suhu panas</label>
+<label><input type="checkbox" id="G050"> G050 Harddisk penuh</label>
+</div>
+
+<div class="progress-area">
+  <div class="progress-meta">
+    <span>Progress pengisian gejala</span>
+    <span id="progressText">0%</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+</div>
+
+<button onclick="diagnosa()">Proses Diagnosa</button>
+
+<div class="result">
+  <p id="hasil"><b>Hasil:</b> -</p>
+  <p id="solusi"><b>Solusi:</b> -</p>
+</div>
+</div>
+
+<script>
+function cek(id){
+  return document.getElementById(id)?.checked;
+}
+
+/* === PROGRESS BAR === */
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+function updateProgress(){
+  const cbs = document.querySelectorAll('input[type="checkbox"]');
+  let checked = 0;
+  cbs.forEach(cb => cb.checked && checked++);
+  const percent = Math.round((checked / cbs.length) * 100);
+  progressBar.style.width = percent + "%";
+  progressText.innerText = percent + "%";
+}
+
+document.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
+  cb.addEventListener("change", updateProgress);
+});
+
+updateProgress();
+
+/* === DIAGNOSA === */
+function diagnosa(){
+  let hasil = "Tidak ditemukan kerusakan";
+  let solusi = "-";
+
+  if(cek("G001")&&cek("G002")&&cek("G003")&&cek("G004")){
+    hasil="K001 Komputer tidak mau hidup";
+    solusi="Periksa power supply dan kabel power";
+  }
+  else if(cek("G006")&&cek("G007")&&cek("G008")&&cek("G009")){
+    hasil="K002 Laptop mati total";
+    solusi="Cek adaptor, DC Jack, dan baterai";
+  }
+  else if(cek("G010")&&cek("G011")&&cek("G012")&&cek("G013")&&cek("G014")&&cek("G015")&&cek("G016")){
+    hasil="K003 Komputer hidup tapi tidak booting";
+    solusi="Periksa RAM dan harddisk";
+  }
+  else if(cek("G022")&&cek("G023")&&cek("G024")){
+    hasil="K004 Booting selalu Safe Mode";
+    solusi="Perbaiki sistem operasi";
+  }
+  else if(cek("G049")){
+    hasil="K021 Processor panas";
+    solusi="Bersihkan kipas dan thermal paste";
+  }
+  else if(cek("G050")){
+    hasil="Harddisk penuh";
+    solusi="Hapus file atau upgrade HDD";
+  }
+
+  document.getElementById("hasil").innerHTML="<b>Hasil:</b> "+hasil;
+  document.getElementById("solusi").innerHTML="<b>Solusi:</b> "+solusi;
+}
+</script>
+
+</body>
+</html>
