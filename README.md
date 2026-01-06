@@ -1,0 +1,1 @@
+# sistem_pakar_diagnosa_kerusakan_komputer
